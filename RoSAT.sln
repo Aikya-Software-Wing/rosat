@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellingCorrector", "Spelli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{8DB8ED4F-FFE7-41CD-BD62-D296EE3B716B}"
 	ProjectSection(SolutionItems) = preProject
+		SQLServer2016.sql = SQLServer2016.sql
 		SQLServer2017.sql = SQLServer2017.sql
 	EndProjectSection
 EndProject
