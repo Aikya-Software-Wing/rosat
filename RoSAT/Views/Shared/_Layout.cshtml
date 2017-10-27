@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSAT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link rel="script" href="Scripts/script.js">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")" />
+    <script language="javascript" type="text/javascript">
+        window.history.forward();
+        function sync() {
+            var presentAddress = document.getElementById('presentAddress');
+            var permanentAddress = document.getElementById('permanentAddress');
+            permanentAddress.value = presentAddress.value;
+
+        }
+    </script>
+
+</head>
+
+
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RoSAT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav"></ul>
+                @if (User.IsInRole("admin"))
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Manage <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu navbar-inverse">
+                                <li>@Html.ActionLink("Department", "Index", "Departments")</li>
+                                <li>@Html.ActionLink("Gender", "Index", "Genders")</li>
+                                <li>@Html.ActionLink("Board", "Index", "BoardTypes")</li>
+                                <li>@Html.ActionLink("Event Types", "Index", "EventTypes")</li>
+                                <li>@Html.ActionLink("Address Types", "Index", "AddressTypes")</li>
+                                <li>@Html.ActionLink("Parent Types", "Index", "ParentTypes")</li>
+                                <li>@Html.ActionLink("Job/Project Types", "Index", "JobProjectsCategories")</li>
+                                <li>@Html.ActionLink("Quota", "Index", "Quotas")</li>
+                                <li>@Html.ActionLink("Skills Categories", "Index", "SkillsCategories")</li>
+                                <li>@Html.ActionLink("Event Level", "Index", "EventLevels")</li>
+                                <li>@Html.ActionLink("Users", "Register", "Account")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.Partial("_LoginPartial")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="text-align:center; ">
+            <p style="color:white;">Made with<span style="color:crimson;font-size:large">&nbsp;&hearts;&nbsp;</span>by Aikya Software Wing</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

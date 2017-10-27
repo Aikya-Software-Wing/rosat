@@ -1,0 +1,114 @@
+﻿@model RoSAT.Models.School
+
+@{
+    ViewBag.Title = "CreateSchool";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 form-box reg-form1">
+
+            @using (Html.BeginForm("CreateSchool", "Schools", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Step 4 / 8</h3>
+                        <p>School Information:</p>
+                        
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, "School*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            <p>Fill in details of the school you studied in when you took your board exams i.e 10th followed by 12th/2nd PU/Diploma.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsUrban, "School Locality*", htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-9">
+                            @Html.RadioButtonFor(model => model.IsUrban, true)
+                            <label>&nbsp;Urban&nbsp;</label>
+                            @Html.RadioButtonFor(model => model.IsUrban, false)
+                            <label>&nbsp;Rural&nbsp;</label>
+                            @Html.ValidationMessageFor(model => model.IsUrban, "", new { @class = "text-danger" })
+                            <p>Urban includes cities and towns. Rural includes villages.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SchoolTypeId, "School Type*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.SchoolTypeId, ViewBag.Types as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SchoolTypeId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Board, "Board*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.Board, ViewBag.Category as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Board, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MediumInstruction, "Medium of Instruction*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.MediumInstruction, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MediumInstruction, "", new { @class = "text-danger" })
+                            <p>Please enter only language (Eg: English)</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsGPA, "GPA", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.CheckBoxFor(model => model.IsGPA)
+                            @Html.ValidationMessageFor(model => model.IsGPA, "", new { @class = "text-danger" })
+                            <p>If you studied in a CBSE school, select GPA and fill in your GPA under the Percentage/GPA Score field.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PercentageMarks, "Percentage/GPA score*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.PercentageMarks, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PercentageMarks, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-9">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+        </div>
+
+
+
+
+        <div class="col-md-6 reg-form2 form-box">
+            @Html.Action("ListSchools")
+        </div>
+    </div>
+
+    <div class="row">
+        @if (TempData.Peek("SchoolList") !=null)
+        {
+            if (((List<RoSAT.Models.School>)TempData.Peek("SchoolList")).Count >= 2)
+            {
+            <div class="col-md-12 text-center">
+                @Html.ActionLink("Proceed to next step", "Proceed", "Schools", null, new { @class = "btn btn-primary" })
+            </div>
+            }
+        }
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,113 @@
+﻿@using RoSAT.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSAT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link rel="script" href="Scripts/script.js">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")" />
+    <script language="javascript" type="text/javascript">
+        window.history.forward();
+        function sync() {
+            var presentAddress = document.getElementById('presentAddress');
+            var permanentAddress = document.getElementById('permanentAddress');
+            permanentAddress.value = presentAddress.value;
+
+        }
+    </script>
+
+</head>
+
+
+
+<body>
+    <div class="container">
+        <div class="text-center" style="padding-top:50px;">
+
+            <img src="~/Content/image/rosat-01.svg" style="width: 1020px; height:68px;" />
+
+
+        </div>
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-offset-4 col-md-4 form-box reg-form1">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h4>Log in.</h4>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label col-md-5" })
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "" })
+                               
+                            </div>
+                            <div class="col-md-12">
+                                
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "" })
+                                
+                            </div>
+                            <div class="col-md-12">
+                               
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="checkbox" style="margin-left: 26px;">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                        
+                  </div>
+                <div class="text-center">
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="submit" value="Log in" class="btn btn-info" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-10">
+                            @Html.ActionLink("Register as a new user", "Register")
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-10">
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </div>
+                    </div>
+                </div>
+                }
+           
+        </div>
+    </div>
+    </div>
+    </body>
+</html>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

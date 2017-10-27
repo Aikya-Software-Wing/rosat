@@ -1,0 +1,153 @@
+﻿@model RoSAT.Models.SecondParent
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+<div class="container">
+
+    @using (Html.BeginForm("Edit", "FullParent", FormMethod.Post, new { enctype = "multipart/form-data", @class = "reg-form1" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-top">
+                <div class="form-top-left">
+                    <h3>Step 2/ 8</h3>
+                    <p>Parent Details:</p>
+                    <ul>
+                        <li>If a parent's phone number is not applicable, enter alternative phone number instead. </li>
+                        <li>Mention NA for any other fields which are not applicable.</li>
+                    </ul>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FathersName, "Father's Name*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FathersName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FathersName, "", new { @class = "text-danger" })
+                            <p>Enter full name. Don't use dots, use spaces instead.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FatherPhone, "Father's Phone*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FatherPhone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FatherPhone, "", new { @class = "text-danger" })
+                            <p>Phone number should <b>NOT</b> be prefixed with +91/0.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FatherEmail, "Father's Email*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FatherEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FatherEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FatherQualification, "Father's Qualification*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FatherQualification, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FatherQualification, "", new { @class = "text-danger" })
+                            <p>Highest qualification only, no dots (Eg: MBA)</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FatherOccupation, "Father's Occupation*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FatherOccupation, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FatherOccupation, "", new { @class = "text-danger" })
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FatherSalary, "Father's Salary*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.FatherSalary, ViewBag.SalaryType as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.FatherSalary, "", new { @class = "text-danger" })
+                            <p>Select NA if not applicable.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MothersName, "Mother's Name*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MothersName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MothersName, "", new { @class = "text-danger" })
+                            <p>Enter full name. Don't use dots, use spaces instead.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MotherPhone, "Mother's Phone*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MotherPhone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MotherPhone, "", new { @class = "text-danger" })
+                            <p>Phone number should <b>NOT</b> be prefixed with +91/0.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MotherEmail, "Mother's Email", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MotherEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MotherEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MotherQualification, "Mother's Qualification*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MotherQualification, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MotherQualification, "", new { @class = "text-danger" })
+                            <p>Highest qualification only, no dots (Eg: MBA)</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MotherOccupation, "Mother's Occupation*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MotherOccupation, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MotherOccupation, "", new { @class = "text-danger" })
+                            <p>If your mother is a home maker(house wife), enter just that.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MotherSalary, "Mother's Salary*", htmlAttributes: new { @class = "control -label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.MotherSalary, ViewBag.SalaryType as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MotherSalary, "", new { @class = "text-danger" })
+                            <p>Select NA if not applicable.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <input type="submit" value="Proceed" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

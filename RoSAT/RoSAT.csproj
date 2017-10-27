@@ -1,0 +1,712 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71B6D2CC-0803-4250-AF1B-D95CB1850DDE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RoSAT</RootNamespace>
+    <AssemblyName>RoSAT</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.13605.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\AddressTypesController.cs" />
+    <Compile Include="Controllers\AreaInterestsController.cs" />
+    <Compile Include="Controllers\AutofillController.cs" />
+    <Compile Include="Controllers\BoardTypesController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DummyController.cs" />
+    <Compile Include="Controllers\EventLevelsController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\EventTypesController.cs" />
+    <Compile Include="Controllers\FullParentController.cs" />
+    <Compile Include="Controllers\GendersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobProjectController.cs" />
+    <Compile Include="Controllers\JobProjectsCategoriesController.cs" />
+    <Compile Include="Controllers\MajorQuotasController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
+    <Compile Include="Controllers\MinorQuotasController.cs" />
+    <Compile Include="Controllers\ParentTypesController.cs" />
+    <Compile Include="Controllers\QuotasController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SchoolsController.cs" />
+    <Compile Include="Controllers\SkillsCategoriesController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\SubjectTypesController.cs" />
+    <Compile Include="Controllers\SyllabusTypeController.cs" />
+    <Compile Include="Controllers\UtilityController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\HttpPostedFileBaseExtensions.cs" />
+    <Compile Include="Migrations\201704081428466_initial.cs" />
+    <Compile Include="Migrations\201704081428466_initial.Designer.cs">
+      <DependentUpon>201704081428466_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081435535_initialvalidation.cs" />
+    <Compile Include="Migrations\201704081435535_initialvalidation.Designer.cs">
+      <DependentUpon>201704081435535_initialvalidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081445392_initialvalidation1.cs" />
+    <Compile Include="Migrations\201704081445392_initialvalidation1.Designer.cs">
+      <DependentUpon>201704081445392_initialvalidation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081459540_initialvalidation111.cs" />
+    <Compile Include="Migrations\201704081459540_initialvalidation111.Designer.cs">
+      <DependentUpon>201704081459540_initialvalidation111.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081506593_MadeIsGPANotNull.cs" />
+    <Compile Include="Migrations\201704081506593_MadeIsGPANotNull.Designer.cs">
+      <DependentUpon>201704081506593_MadeIsGPANotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081523143_InitialMigration222.cs" />
+    <Compile Include="Migrations\201704081523143_InitialMigration222.Designer.cs">
+      <DependentUpon>201704081523143_InitialMigration222.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081552127_MadePercentageNotNull.cs" />
+    <Compile Include="Migrations\201704081552127_MadePercentageNotNull.Designer.cs">
+      <DependentUpon>201704081552127_MadePercentageNotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704081620192_MadeYearAndIsGPANotNull.cs" />
+    <Compile Include="Migrations\201704081620192_MadeYearAndIsGPANotNull.Designer.cs">
+      <DependentUpon>201704081620192_MadeYearAndIsGPANotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090638212_MadeEmailNotRequired.cs" />
+    <Compile Include="Migrations\201704090638212_MadeEmailNotRequired.Designer.cs">
+      <DependentUpon>201704090638212_MadeEmailNotRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090641057_MadeYearOfJoiningInteger.cs" />
+    <Compile Include="Migrations\201704090641057_MadeYearOfJoiningInteger.Designer.cs">
+      <DependentUpon>201704090641057_MadeYearOfJoiningInteger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090702154_FixedIncorrectDataType.cs" />
+    <Compile Include="Migrations\201704090702154_FixedIncorrectDataType.Designer.cs">
+      <DependentUpon>201704090702154_FixedIncorrectDataType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090729335_MadeDurationInteger.cs" />
+    <Compile Include="Migrations\201704090729335_MadeDurationInteger.Designer.cs">
+      <DependentUpon>201704090729335_MadeDurationInteger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090858388_MadeSemesterAndSubIdNotNull.cs" />
+    <Compile Include="Migrations\201704090858388_MadeSemesterAndSubIdNotNull.Designer.cs">
+      <DependentUpon>201704090858388_MadeSemesterAndSubIdNotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704091554539_UpdatedMarkEntity.cs" />
+    <Compile Include="Migrations\201704091554539_UpdatedMarkEntity.Designer.cs">
+      <DependentUpon>201704091554539_UpdatedMarkEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704091602367_MadeMarksFieldsRequired.cs" />
+    <Compile Include="Migrations\201704091602367_MadeMarksFieldsRequired.Designer.cs">
+      <DependentUpon>201704091602367_MadeMarksFieldsRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704091634090_MigratuionAfterMergeConflict.cs" />
+    <Compile Include="Migrations\201704091634090_MigratuionAfterMergeConflict.Designer.cs">
+      <DependentUpon>201704091634090_MigratuionAfterMergeConflict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704100947374_MadeMarksInt.cs" />
+    <Compile Include="Migrations\201704100947374_MadeMarksInt.Designer.cs">
+      <DependentUpon>201704100947374_MadeMarksInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704110412007_AddedSemester.cs" />
+    <Compile Include="Migrations\201704110412007_AddedSemester.Designer.cs">
+      <DependentUpon>201704110412007_AddedSemester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704110626325_AddedRange.cs" />
+    <Compile Include="Migrations\201704110626325_AddedRange.Designer.cs">
+      <DependentUpon>201704110626325_AddedRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704110705512_MadePositionInt.cs" />
+    <Compile Include="Migrations\201704110705512_MadePositionInt.Designer.cs">
+      <DependentUpon>201704110705512_MadePositionInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220454125_MajorQuotas.cs" />
+    <Compile Include="Migrations\201709220454125_MajorQuotas.Designer.cs">
+      <DependentUpon>201709220454125_MajorQuotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220458302_changeofname.cs" />
+    <Compile Include="Migrations\201709220458302_changeofname.Designer.cs">
+      <DependentUpon>201709220458302_changeofname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220536014_undorename.cs" />
+    <Compile Include="Migrations\201709220536014_undorename.Designer.cs">
+      <DependentUpon>201709220536014_undorename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220540408_cositasked.cs" />
+    <Compile Include="Migrations\201709220540408_cositasked.Designer.cs">
+      <DependentUpon>201709220540408_cositasked.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220623494_fixonmajorminor.cs" />
+    <Compile Include="Migrations\201709220623494_fixonmajorminor.Designer.cs">
+      <DependentUpon>201709220623494_fixonmajorminor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220626267_fixonmajorminornew.cs" />
+    <Compile Include="Migrations\201709220626267_fixonmajorminornew.Designer.cs">
+      <DependentUpon>201709220626267_fixonmajorminornew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221005382_UnhookQuizFromStudent.cs" />
+    <Compile Include="Migrations\201709221005382_UnhookQuizFromStudent.Designer.cs">
+      <DependentUpon>201709221005382_UnhookQuizFromStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AddressType.cs" />
+    <Compile Include="Models\AddressViewModel.cs" />
+    <Compile Include="Models\AreaInterest.cs" />
+    <Compile Include="Models\BoardType.cs" />
+    <Compile Include="Models\ChartViewModel.cs" />
+    <Compile Include="Models\Choice.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventLevel.cs" />
+    <Compile Include="Models\EventType.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobProject.cs" />
+    <Compile Include="Models\JobProjectsCategory.cs" />
+    <Compile Include="Models\MajorQuota.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mark.cs" />
+    <Compile Include="Models\MarkMetaData.cs" />
+    <Compile Include="Models\MinorQuota.cs" />
+    <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\ParentType.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Quiz.cs" />
+    <Compile Include="Models\Quota.cs" />
+    <Compile Include="Models\ReportGenerationFormViewModel.cs" />
+    <Compile Include="Models\RosatEntities.cs" />
+    <Compile Include="Models\SalaryType.cs" />
+    <Compile Include="Models\School.cs" />
+    <Compile Include="Models\SchoolType.cs" />
+    <Compile Include="Models\SecondParent.cs" />
+    <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\SkillsCategory.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentTakesQuiz.cs" />
+    <Compile Include="Models\SubjectType.cs" />
+    <Compile Include="Models\SubSkill.cs" />
+    <Compile Include="Models\SyllabusType.cs" />
+    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\backg.png" />
+    <Content Include="Content\image\logo.gif" />
+    <Content Include="Content\image\rosat-01.svg" />
+    <Content Include="Content\image\rosat-02-01-01.svg" />
+    <Content Include="Content\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\txt\words.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Views\favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Genders\Create.cshtml" />
+    <Content Include="Views\Genders\Delete.cshtml" />
+    <Content Include="Views\Genders\Details.cshtml" />
+    <Content Include="Views\Genders\Edit.cshtml" />
+    <Content Include="Views\Genders\Index.cshtml" />
+    <Content Include="Views\BoardTypes\Create.cshtml" />
+    <Content Include="Views\BoardTypes\Delete.cshtml" />
+    <Content Include="Views\BoardTypes\Details.cshtml" />
+    <Content Include="Views\BoardTypes\Edit.cshtml" />
+    <Content Include="Views\BoardTypes\Index.cshtml" />
+    <Content Include="Views\EventTypes\Create.cshtml" />
+    <Content Include="Views\EventTypes\Delete.cshtml" />
+    <Content Include="Views\EventTypes\Details.cshtml" />
+    <Content Include="Views\EventTypes\Edit.cshtml" />
+    <Content Include="Views\EventTypes\Index.cshtml" />
+    <Content Include="Views\AddressTypes\Create.cshtml" />
+    <Content Include="Views\AddressTypes\Delete.cshtml" />
+    <Content Include="Views\AddressTypes\Details.cshtml" />
+    <Content Include="Views\AddressTypes\Edit.cshtml" />
+    <Content Include="Views\AddressTypes\Index.cshtml" />
+    <Content Include="Views\ParentTypes\Create.cshtml" />
+    <Content Include="Views\ParentTypes\Delete.cshtml" />
+    <Content Include="Views\ParentTypes\Details.cshtml" />
+    <Content Include="Views\ParentTypes\Edit.cshtml" />
+    <Content Include="Views\ParentTypes\Index.cshtml" />
+    <Content Include="Views\JobProjectsCategories\Create.cshtml" />
+    <Content Include="Views\JobProjectsCategories\Delete.cshtml" />
+    <Content Include="Views\JobProjectsCategories\Details.cshtml" />
+    <Content Include="Views\JobProjectsCategories\Edit.cshtml" />
+    <Content Include="Views\JobProjectsCategories\Index.cshtml" />
+    <Content Include="Views\Quotas\Create.cshtml" />
+    <Content Include="Views\Quotas\Delete.cshtml" />
+    <Content Include="Views\Quotas\Details.cshtml" />
+    <Content Include="Views\Quotas\Edit.cshtml" />
+    <Content Include="Views\Quotas\Index.cshtml" />
+    <Content Include="Views\SkillsCategories\Create.cshtml" />
+    <Content Include="Views\SkillsCategories\Delete.cshtml" />
+    <Content Include="Views\SkillsCategories\Details.cshtml" />
+    <Content Include="Views\SkillsCategories\Edit.cshtml" />
+    <Content Include="Views\SkillsCategories\Index.cshtml" />
+    <Content Include="Views\EventLevels\Create.cshtml" />
+    <Content Include="Views\EventLevels\Delete.cshtml" />
+    <Content Include="Views\EventLevels\Details.cshtml" />
+    <Content Include="Views\EventLevels\Edit.cshtml" />
+    <Content Include="Views\EventLevels\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Events\CreateEvent.cshtml" />
+    <Content Include="Views\JobProject\CreateJobProject.cshtml" />
+    <Content Include="Views\Skills\CreateSkill.cshtml" />
+    <Content Include="Views\Schools\CreateSchool.cshtml" />
+    <Content Include="Views\Schools\_ListSchools.cshtml" />
+    <Content Include="Views\Schools\EditSchool.cshtml" />
+    <Content Include="Views\FullParent\Create.cshtml" />
+    <Content Include="Views\FullParent\Details.cshtml" />
+    <Content Include="Views\Skills\_ListSkills.cshtml" />
+    <Content Include="Views\Skills\EditSkill.cshtml" />
+    <Content Include="Views\JobProject\_ListProject.cshtml" />
+    <Content Include="Views\JobProject\EditJobProject.cshtml" />
+    <Content Include="Views\AreaInterests\Create.cshtml" />
+    <Content Include="Views\AreaInterests\Edit.cshtml" />
+    <Content Include="Views\AreaInterests\_ListArea.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Events\_ListEvent.cshtml" />
+    <Content Include="Views\Events\EditEvent.cshtml" />
+    <Content Include="Views\FullParent\Edit.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Mark\Confirmation.cshtml" />
+    <Content Include="Views\Mark\CreateMark.cshtml" />
+    <Content Include="Views\Mark\EditMark.cshtml" />
+    <Content Include="Views\Mark\_ListMark.cshtml" />
+    <Content Include="Views\SyllabusType\CreateSyllabus.cshtml" />
+    <Content Include="Views\Shared\Photo.cshtml" />
+    <Content Include="Views\Dummy\Dummy.cshtml" />
+    <Content Include="Views\SubjectTypes\Create.cshtml" />
+    <Content Include="Views\SubjectTypes\Delete.cshtml" />
+    <Content Include="Views\SubjectTypes\Details.cshtml" />
+    <Content Include="Views\SubjectTypes\Edit.cshtml" />
+    <Content Include="Views\SubjectTypes\Index.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\DisplayReport.cshtml" />
+    <Content Include="Views\MajorQuotas\Create.cshtml" />
+    <Content Include="Views\MajorQuotas\Delete.cshtml" />
+    <Content Include="Views\MajorQuotas\Details.cshtml" />
+    <Content Include="Views\MajorQuotas\Edit.cshtml" />
+    <Content Include="Views\MajorQuotas\Index.cshtml" />
+    <Content Include="Views\MinorQuotas\Create.cshtml" />
+    <Content Include="Views\MinorQuotas\Delete.cshtml" />
+    <Content Include="Views\MinorQuotas\Details.cshtml" />
+    <Content Include="Views\MinorQuotas\Edit.cshtml" />
+    <Content Include="Views\MinorQuotas\Index.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Autofill\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Logs\" />
+    <Folder Include="Views\Utility\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704081428466_initial.resx">
+      <DependentUpon>201704081428466_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081435535_initialvalidation.resx">
+      <DependentUpon>201704081435535_initialvalidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081445392_initialvalidation1.resx">
+      <DependentUpon>201704081445392_initialvalidation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081459540_initialvalidation111.resx">
+      <DependentUpon>201704081459540_initialvalidation111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081506593_MadeIsGPANotNull.resx">
+      <DependentUpon>201704081506593_MadeIsGPANotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081523143_InitialMigration222.resx">
+      <DependentUpon>201704081523143_InitialMigration222.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081552127_MadePercentageNotNull.resx">
+      <DependentUpon>201704081552127_MadePercentageNotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081620192_MadeYearAndIsGPANotNull.resx">
+      <DependentUpon>201704081620192_MadeYearAndIsGPANotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090638212_MadeEmailNotRequired.resx">
+      <DependentUpon>201704090638212_MadeEmailNotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090641057_MadeYearOfJoiningInteger.resx">
+      <DependentUpon>201704090641057_MadeYearOfJoiningInteger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090702154_FixedIncorrectDataType.resx">
+      <DependentUpon>201704090702154_FixedIncorrectDataType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090729335_MadeDurationInteger.resx">
+      <DependentUpon>201704090729335_MadeDurationInteger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090858388_MadeSemesterAndSubIdNotNull.resx">
+      <DependentUpon>201704090858388_MadeSemesterAndSubIdNotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704091554539_UpdatedMarkEntity.resx">
+      <DependentUpon>201704091554539_UpdatedMarkEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704091602367_MadeMarksFieldsRequired.resx">
+      <DependentUpon>201704091602367_MadeMarksFieldsRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704091634090_MigratuionAfterMergeConflict.resx">
+      <DependentUpon>201704091634090_MigratuionAfterMergeConflict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704100947374_MadeMarksInt.resx">
+      <DependentUpon>201704100947374_MadeMarksInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704110412007_AddedSemester.resx">
+      <DependentUpon>201704110412007_AddedSemester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704110626325_AddedRange.resx">
+      <DependentUpon>201704110626325_AddedRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704110705512_MadePositionInt.resx">
+      <DependentUpon>201704110705512_MadePositionInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220454125_MajorQuotas.resx">
+      <DependentUpon>201709220454125_MajorQuotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220458302_changeofname.resx">
+      <DependentUpon>201709220458302_changeofname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220536014_undorename.resx">
+      <DependentUpon>201709220536014_undorename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220540408_cositasked.resx">
+      <DependentUpon>201709220540408_cositasked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220623494_fixonmajorminor.resx">
+      <DependentUpon>201709220623494_fixonmajorminor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220626267_fixonmajorminornew.resx">
+      <DependentUpon>201709220626267_fixonmajorminornew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221005382_UnhookQuizFromStudent.resx">
+      <DependentUpon>201709221005382_UnhookQuizFromStudent.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpellingCorrector\SpellingCorrector.csproj">
+      <Project>{9A42A02E-E735-4174-AA70-9471BC1608F4}</Project>
+      <Name>SpellingCorrector</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>15295</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15295/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

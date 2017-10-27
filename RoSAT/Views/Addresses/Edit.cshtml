@@ -1,0 +1,64 @@
+﻿@model RoSAT.Models.AddressViewModel
+
+@{
+    ViewBag.Title = "Contact Information";
+}
+<div class="container" style="color: white;">
+    <div class="row" style="position: relative;
+    right: 25%;
+    left: 25%;">
+        <div class="col-md-6  form-box reg-form1">
+
+
+            @using (Html.BeginForm("Edit", "Addresses", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Step 3 / 8</h3>
+                        <p>Contact Information:</p>
+                        <p>Don't include commas, dots and # symbols. Leave blank spaces wherever necessary.</p>
+                    </div>
+                    <div class="form-top-right">
+
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.presentAddress, "Present Address*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.presentAddress, 5, 15, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.presentAddress, "", new { @class = "text-danger" })
+                            <p>If you stay in the college hostel/ as a PG, mention that address under Present Address.</p>
+                        </div>
+                    </div>
+                    <label class="form-check-label">
+                        <input id="permanentAddrCheck" type="checkbox" onclick="sync()" unchecked>
+                        Permanent Address is same as Current Address
+                    </label>
+                    <div class="form-group" id="permanent-address-wrap">
+                        @Html.LabelFor(m => m.permanentAddress, "Permanent Address*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.permanentAddress, 5, 15, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.permanentAddress, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-next btn-info" value="Next">
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

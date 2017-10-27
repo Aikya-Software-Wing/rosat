@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSAT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link rel="script" href="Scripts/script.js">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")" />
+    <script language="javascript" type="text/javascript">
+        window.history.forward();
+        function sync() {
+            var presentAddress = document.getElementById('presentAddress');
+            var permanentAddress = document.getElementById('permanentAddress');
+            permanentAddress.value = presentAddress.value;
+
+        }
+    </script>
+
+</head>
+
+
+
+<body>
+@if (Request.IsAuthenticated)
+{
+    if (ViewBag.hasRegistered)
+    {
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("RoSAT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav"></ul>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Manage <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu navbar-inverse">
+                                    <li>@Html.ActionLink("Autofill", "Index", "Autofill")</li>
+                                    <li>@Html.ActionLink("Department", "Index", "Departments")</li>
+                                    <li>@Html.ActionLink("Gender", "Index", "Genders")</li>
+                                    <li>@Html.ActionLink("Board", "Index", "BoardTypes")</li>
+                                    <li>@Html.ActionLink("Event Types", "Index", "EventTypes")</li>
+                                    <li>@Html.ActionLink("Address Types", "Index", "AddressTypes")</li>
+                                    <li>@Html.ActionLink("Parent Types", "Index", "ParentTypes")</li>
+                                    <li>@Html.ActionLink("Job/Project Types", "Index", "JobProjectsCategories")</li>
+                                    <li>@Html.ActionLink("Quota", "Index", "Quotas")</li>
+                                    <li>@Html.ActionLink("Skills Categories", "Index", "SkillsCategories")</li>
+                                    <li>@Html.ActionLink("Event Level", "Index", "EventLevels")</li>
+                                    <li>@Html.ActionLink("Users", "Register", "Account")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.Partial("_LoginPartial")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+}
+    <div class="text-center" style="padding-top:50px;">
+    
+        <img src="~/Content/image/rosat-01.svg" style="width: 1020px; height:68px;" />
+
+        
+    </div>
+    <div id="about" class="container-fluid" style="color: white;">
+        <div class="row" style="background-color: rgba(161, 155, 143, 0.25);margin-right: 100px;margin-left: 100px;">
+            <div class="col-md-12" style="text-align:justify;">
+                <h2 style="color: white;">About ROSAT</h2><br>
+                ROSAT is a student portal for students to provide information about themselves in order to get opportunities in fields they are experienced or interested in. Details such as:
+                <ul>
+                    <li>Academic performance</li>
+                    <li>Event-participation (Co-curricular, extra-curricular, cultural, and anything else!)</li>
+                    <li>Skills / certifications</li>
+                    <li>Areas of interest</li>
+                    <li>Projects / Internships / Jobs</li>
+                </ul>
+                will be used to provide unique opportunities for students to hone their skills. Not only will spending a few minutes filling out this form help students, students also help the institution understand more about them so that it can serve them better in the long run. Accurate data will help ensure that the opportunities you receive will be within your skillset and areas of interest. Inaccurate or false information will not help anyone in any way. I have read the above information and I certify that the information that I am providing is correct to the best of my knowledge. The accuracy of the data you have provided will help you and the institutionin the long run.Falsification of information will help none.By spending just 10-15 minutes,you are actively helping your institution establish permanent records of students.Please ensure that the information you provide is correct to the best of your knowledge.
+                <br />
+                <br />
+                <div class="text-center">
+                    @if (Request.IsAuthenticated)
+            {
+                if (ViewBag.hasRegistered)
+                {
+                            <p>@Html.ActionLink("Click here to view/update your resume", "Edit", "Students", null, new { @class = "btn btn-info" })</p>
+                        }
+                        else
+                        {
+                            <p>@Html.ActionLink("Click here to create your resume", "Create", "Students", null, new { @class = "btn btn-info" })</p>
+                        }
+                        <p>@Html.ActionLink("Click here to meet the team that made this possible", "About", "Home", null, new { @class = "btn btn-info" })</p>
+                    }
+                    else
+                    {
+                        <p>
+                            @Html.ActionLink("I agree", "Login", "Account", routeValues: new { }, htmlAttributes: new { @class = "btn btn-primary" })
+                        </p>
+                       
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

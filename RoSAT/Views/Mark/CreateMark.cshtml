@@ -1,0 +1,71 @@
+﻿@model Mark[]
+@using RoSAT.Models
+
+@{
+    ViewBag.Title = "CreateMark";
+}
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="form-box col-md-offset-4 col-md-6 ">
+
+            @using (Html.BeginForm("CreateMark", "Mark", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h4>Mark</h4>
+                        <p>Proceed only after entering marks for all semesters</p>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="form-bottom">
+                    <table>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Subject Code</th>
+                            @if ((bool)TempData.Peek("isCGPA") == true)
+                            {
+                                <th>Grade Points</th>
+                            }
+                            else
+                            {
+                                <th>Internal Marks</th>
+                                <th>External Marks</th>
+                            }
+                        </tr>
+                        @for (int i = 0; i < Model.Length; i++)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => m[i].SubjectType.Name) @Html.HiddenFor(m => m[i].Id) @Html.HiddenFor(m => m[i].SubType) @Html.HiddenFor(m => m[i].SylType) @Html.HiddenFor(m => m[i].Sem)</td>
+                                <td>@Html.DisplayFor(m => m[i].SubjectType.Code)</td>
+                                @if ((bool)TempData.Peek("isCGPA") == true)
+                                {
+                                    <td>@Html.EditorFor(m => m[i].ExternalMarks, new { @class = "form-control" }) @Html.HiddenFor(m => m[i].InternalMarks) @Html.ValidationMessageFor(m => m[i].ExternalMarks)</td>
+                                }
+                                else
+                                {
+                                    <td>@Html.EditorFor(m => m[i].InternalMarks, new { @class = "form-control" }) @Html.ValidationMessageFor(m => m[i].InternalMarks)</td>
+                                    <td>@Html.EditorFor(m => m[i].ExternalMarks, new { @class = "form-control" }) @Html.ValidationMessageFor(m => m[i].ExternalMarks)</td>
+                                }
+                            </tr>
+                            
+                        }
+                    </table>
+                </div>
+
+                <input type="submit" class="btn btn-info" />
+            }
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+
+    <div class="row">
+    </div>
+</div>

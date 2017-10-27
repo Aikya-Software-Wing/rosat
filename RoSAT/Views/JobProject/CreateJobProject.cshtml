@@ -1,0 +1,98 @@
+﻿@model RoSAT.Models.JobProject
+
+@{
+    ViewBag.Title = "CreateJobProject";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6  form-box reg-form1">
+
+            @using (Html.BeginForm("CreateJobProject", "JobProject", FormMethod.Post, new { enctype = "multipart/form-data"}))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Step 7 / 8</h3>
+                        <p>Job/Project Information:</p>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="form-bottom">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Category, "Category*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.Category, ViewBag.Category as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, "Name of project/company*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Descri, "Description*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Descri, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descri, "", new { @class = "text-danger" })
+                            <p>For jobs, mention your role (Eg: UX designer, technical intern, etc). For projects, briefly describe the project/technologies used.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Duration, "Duration*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                            <p>Duration should be in number of weeks. An approximate is okay if you do not remember exactly. Enter 0 for ongoing jobs.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Salary, "Salary", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                            <p>Leave this field empty if unpaid internship/job.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" id="btn2" class="btn btn-next btn-info" value="Add" />
+                    </div>
+
+                </div>
+            }
+        </div>
+
+
+       
+           
+      
+    <div class="col-md-6 form-box reg-form2">
+        @Html.Action("ListProject")
+    </div>
+</div>
+
+<div class="row">
+    @if (TempData.Peek("ProjectList") != null)
+    {
+        <div class="col-md-12 text-center">
+            @Html.ActionLink("Proceed to next step", "Proceed", "JobProject", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+    else
+    {
+        <div class="col-md-12 text-center">
+            @Html.ActionLink("I have not worked anywhere nor have I worked on projects and I would like to move on", "Proceed", "JobProject", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

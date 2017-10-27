@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RoSAT.Models.JobProject>
+
+@if (Model.Count() > 0)
+{
+    <div class="container tableIt wrapper">
+        <table align='center' id="data_table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descri)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobProjectsCategory.Name)
+                </th>
+                <th></th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descri)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobProjectsCategory.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditJobProject", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteJobProject", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    </div>
+    
+}

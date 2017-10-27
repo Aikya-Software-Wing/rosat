@@ -1,0 +1,46 @@
+﻿@model RoSAT.Models.AreaInterest
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <div class="row "style="position: relative;right: 25%; left: 25%;">
+        <div class="col-sm-6 form-box col-md-6 reg-form1">
+            @using (Html.BeginForm("Edit", "AreaInterests", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Step 8 / 8</h3>
+                        <p>Area of Interest:</p>
+                    </div>
+
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+                            <p>Your areas of interest can be anything, not neccesarily related to your course. You may add any number of interests.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" id="btn2" class="btn btn-next btn-info" value="Save" />
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="col-md-6">
+        </div>
+    </div>
+
+    <div class="row">
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

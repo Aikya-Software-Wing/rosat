@@ -1,0 +1,144 @@
+﻿@model RoSAT.Models.Student
+
+@{
+    ViewBag.Title = "Personal Details";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 form-box reg-form1">
+            @using (Html.BeginForm("Edit", "Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Usn)
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Step 1 / 8</h3>
+                        <p>Personal Details:</p>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AadharNo, "Aadhaar No", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.AadharNo, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.AadharNo, "", new { @class = "text-danger" })
+                            <p>USN <b>OR</b> Aadhar No is compulsory.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, "Name*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            <p>Enter your full name along with initials. Don't use dots, use spaces instead.</p>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.YearOfJoining, "Year Of Joining", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.YearOfJoining, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.YearOfJoining, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Semester, "Current Semester", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Semester, new { htmlAttributes = new { @class = "" } })
+                            @Html.ValidationMessageFor(model => model.Semester, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.photo, "Photo*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            <input type="file" name="photoUpload" class="form-control" />
+                            @Html.ValidationMessageFor(model => model.photo, "", new { @class = "text-danger" })
+                            @if (Model.photo != null)
+                            {
+                                @Html.ActionLink("View Photo", "ShowPhoto", null, new { target = "_blank" })
+                            }
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gender, "Gender*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(model => model.Gender, 1)
+                            <label>&nbsp;Male&nbsp;</label>
+                            @Html.RadioButtonFor(model => model.Gender, 2)
+                            <label>&nbsp;Female&nbsp;</label>
+                            @Html.RadioButtonFor(model => model.Gender, 3)
+                            <label>&nbsp;Other&nbsp;</label>
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dob, "Date of Birth*", htmlAttributes: new { @class = "control-label col-md-5" })
+
+
+                        <div class="col-10 date col-md-10">
+                            @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+                        </div>
+
+
+                    </div>
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.AdmissionQuota, "Admission Quota*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.AdmissionQuota, ViewBag.Types as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AdmissionQuota, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                    @Html.HiddenFor(model => model.AdmissionQuota)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MajorQuota, "Major Quota*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.MajorQuota, ViewBag.Types as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MajorQuota, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MinorQuota, "Minor Quota*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.MinorQuota, ViewBag.Types as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MinorQuota, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Department, "Department*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Department, ViewBag.Types as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PhoneNumber, "Phone Number*", htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            <p>Phone number should <b>NOT</b> be prefixed with +91/0.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-10"><input type="submit" class="btn btn-info " value="Next"></div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

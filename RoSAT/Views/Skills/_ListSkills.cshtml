@@ -1,0 +1,49 @@
+﻿@model IEnumerable<RoSAT.Models.SubSkill>
+
+@if (Model.Count() > 0)
+{
+    <div class="container tableIt wrapper">
+        <table align='center' id="data_table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Certificate
+                </th>
+                <th>
+                    Category
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @if (item.CertificatePhoto != null)
+                        {
+                            using (Html.BeginForm("ViewCertificate", "Skills", FormMethod.Post, new { target = "_blank" }))
+                            {
+                                @Html.Hidden("id", item.Id)
+                                <input type="submit" class="btn-link" value="View Certificate" />
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skill.SkillsCategory.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditSkill", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteSkill", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+}

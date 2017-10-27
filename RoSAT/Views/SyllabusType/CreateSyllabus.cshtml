@@ -1,0 +1,40 @@
+﻿@model RoSAT.Models.SyllabusType
+
+@{
+    ViewBag.Title = "CreateScheme";
+}
+
+<div class="container">
+    <div class="row" style="position: relative;right: 25%; left: 25%;">
+        <div class="col-md-6 form-box reg-form1">
+
+
+            @using (Html.BeginForm(Html.BeginForm("CreateSyllabus", "SyllabusType", FormMethod.Post)))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h4>SyllabusType</h4>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <hr />
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Year, ViewBag.Year as SelectList, "Pick one", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <div class="col-md-offset-1 col-md-10">
+                            <input type="submit" value="Next" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

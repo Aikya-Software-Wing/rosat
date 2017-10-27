@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RoSAT.Models.Mark>
+
+@if (Model.Count() > 0)
+{
+    <div class="container tableIt wrapper">
+        <table align='center' id="data_table">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Sem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubjectType.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InternalMarks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExternalMarks)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubjectType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InternalMarks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExternalMarks)
+                    </td>
+
+
+
+                    <td>
+                        @Html.ActionLink("Edit", "EditMark", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteMark", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+        }

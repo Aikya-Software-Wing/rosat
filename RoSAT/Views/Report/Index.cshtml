@@ -1,0 +1,26 @@
+﻿@model RoSAT.Models.ReportGenerationFormViewModel
+@{
+    ViewBag.Title = "Index";
+    RoSAT.Models.RosatEntities db = new RoSAT.Models.RosatEntities();
+}
+
+<h2>Index</h2>
+@using(Html.BeginForm())
+{
+    <div class="text-danger">
+        @Html.ValidationSummary()
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Department)
+        @Html.DropDownListFor(m => m.Department, (SelectList) ViewBag.Department, "Please select", new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Department)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Semster)
+        @Html.TextBoxFor(m => m.Semster, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Semster)
+    </div>
+
+    <input type="submit" />
+}
