@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{8D
 		SQLServer2014.sql = SQLServer2014.sql
 		SQLServer2016.sql = SQLServer2016.sql
 		SQLServer2017.sql = SQLServer2017.sql
+		SQLSever2012.sql = SQLSever2012.sql
 	EndProjectSection
 EndProject
 Global
