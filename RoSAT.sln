@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoSAT", "RoSAT\RoSAT.csproj", "{71B6D2CC-0803-4250-AF1B-D95CB1850DDE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellingCorrector", "SpellingCorrector\SpellingCorrector.csproj", "{9A42A02E-E735-4174-AA70-9471BC1608F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{8DB8ED4F-FFE7-41CD-BD62-D296EE3B716B}"
+	ProjectSection(SolutionItems) = preProject
+		SQLServer2017.sql = SQLServer2017.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +30,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://rosat.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = RoSAT\\RoSAT.csproj
-		SccProjectName1 = RoSAT
-		SccLocalPath1 = RoSAT
-		SccProjectUniqueName2 = SpellingCorrector\\SpellingCorrector.csproj
-		SccProjectName2 = SpellingCorrector
-		SccLocalPath2 = SpellingCorrector
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BAFB4BC-3D00-4EA0-9687-6D903C3907A8}
 	EndGlobalSection
 EndGlobal
